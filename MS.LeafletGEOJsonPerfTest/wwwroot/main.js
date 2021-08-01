@@ -9,6 +9,8 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoibWljaGFlbHNvdXRoIiwiYSI6ImNrcnM4NDg2bzE0aGcydHBmODhxd2hzdmIifQ.-JGE450yl9FhwyzbrjiKWQ'
 }).addTo(mymap);
 
+var layerControl = L.control.layers(null, null).addTo(mymap);
+
 function Load() {
     console.log("Load GeopJSON layer");
 
@@ -22,7 +24,9 @@ function Load() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            L.geoJSON(data).addTo(mymap);
+            const geoJSONLayer = L.geoJSON(data)
+            geoJSONLayer.addTo(mymap);
+            layerControl.addOverlay(geoJSONLayer, geoJSONFile)
         });
 }
 
