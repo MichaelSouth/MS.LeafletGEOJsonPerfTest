@@ -12,13 +12,13 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var layerControl = L.control.layers(null, null).addTo(mymap);
 
 function Load() {
-    console.log("Load GeopJSON layer");
+    console.log("Load GeoJSON layer");
 
     const geoJSONLayerCombo = document.getElementById("geoJSONLayerCombo");
     const geoJSONFile = geoJSONLayerCombo.value;
     const geoJSONURL = '/geojson/' + geoJSONFile;
 
-    console.log("Loading geoJSON: " + geoJSONURL);
+    console.log("Loading GeoJSON: " + geoJSONURL);
 
     fetch(geoJSONURL)
         .then(response => response.json())
